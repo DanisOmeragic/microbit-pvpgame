@@ -1,31 +1,12 @@
 
 > Open this page at [https://danisomeragic.github.io/microbit-pvpgame/](https://danisomeragic.github.io/microbit-pvpgame/)
 
-## Use as Extension
+## Instructions
+To start, pair the devices by shaking one. The one shaken will have the first turn.
 
-This repository can be added as an **extension** in MakeCode.
+A button - move left
 
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/danisomeragic/microbit-pvpgame** and import
+B button - move right
 
-## Edit this project ![Build status badge](https://github.com/danisomeragic/microbit-pvpgame/workflows/MakeCode/badge.svg)
+A+B - fire
 
-To edit this repository in MakeCode.
-
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/danisomeragic/microbit-pvpgame** and click import
-
-## Blocks preview
-
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
-
-![A rendered view of the blocks](https://github.com/danisomeragic/microbit-pvpgame/raw/master/.github/makecode/blocks.png)
-
-#### Metadata (used for search, rendering)
-
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>

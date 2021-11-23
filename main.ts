@@ -4,6 +4,7 @@ let charPos = 2
 let turn = false
 let gameOver = true
 let started = false
+let shot = false
 // PairSend
 // ReceiveStr
 // ReceiveNum
@@ -36,14 +37,14 @@ input.onButtonPressed(Button.B, function on_button_pressed_b() {
 })
 input.onButtonPressed(Button.AB, function on_button_pressed_ab() {
     
-    if (turn == true && gameOver == false) {
+    if (turn == true && gameOver == false && shot == false) {
+        shot = true
         for (let i = 0; i < 5; i++) {
             led.plot(charPos, 3 - i)
             if (i != 0) {
                 led.unplot(charPos, 4 - i)
             }
             
-            console.log(3 - i)
             pause(100)
         }
         radio.sendNumber(charPos)
@@ -81,12 +82,14 @@ radio.onReceivedNumber(function on_received_number(receivedNumber: number) {
                     gameOver = true
                     radio.sendString("Hit")
                     basic.showString("You Lose")
+                    control.reset()
                 }
                 
             }
             
         }
         turn = true
+        shot = false
     } else if (gameOver == true && started == false) {
         radio.setGroup(receivedNumber)
         console.log("paired")
@@ -101,6 +104,7 @@ radio.onReceivedString(function on_received_string(receivedString: string) {
     if (receivedString == "Hit") {
         gameOver = true
         basic.showString("You Win")
+        control.reset()
     }
     
 })

@@ -5,6 +5,7 @@ charPos = 2
 turn = False
 gameOver = True
 started = False
+shot = False
 
 
 #PairSend
@@ -27,10 +28,11 @@ def on_received_string(receivedString):
     if receivedString == "Hit":
         gameOver = True
         basic.show_string("You Win")
+        control.reset()
 
 #ReceiveNum
 def on_received_number(receivedNumber):
-    global turn, charPos, gameOver, started
+    global turn, charPos, gameOver, started, shot
     
     #ReceiveBullet
     if receivedNumber < 10:
@@ -46,8 +48,10 @@ def on_received_number(receivedNumber):
                     gameOver = True
                     radio.send_string("Hit")
                     basic.show_string("You Lose")
+                    control.reset()
     
         turn = True
+        shot = False
     #ReceivePair
     else:
         if gameOver == True and started == False:
@@ -78,15 +82,14 @@ def on_button_pressed_b():
 
 #Fire
 def on_button_pressed_ab():
-    global charPos, turn
+    global charPos, turn, shot
 
-    if turn == True and gameOver == False:
-        
+    if turn == True and gameOver == False and shot == False:
+        shot = True
         for i, in range(0, 5):
             led.plot(charPos, 3 - i)
             if i != 0:
                 led.unplot(charPos, 4 - i)
-            print(3 - i)
             pause(100)
         radio.send_number(charPos)
 
